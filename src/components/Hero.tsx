@@ -17,7 +17,8 @@ const Hero = ({ isLoading }: { isLoading: boolean }) => {
   );
 
   return (
-    <section className="relative z-0 min-h-[115vh] w-full overflow-hidden flex flex-col justify-end px-8 md:px-20 pb-40">
+    // CHANGE 1: min-h ko 'dvh' (dynamic viewport height) diya taaki mobile browsers mein URL bar issue na kare
+    <section className="relative z-0 min-h-[100dvh] md:min-h-[115vh] w-full overflow-hidden flex flex-col justify-end px-6 md:px-20 pb-32 md:pb-40">
       
       {/* Background Video */}
       <div className="absolute inset-0 -z-20">
@@ -35,20 +36,22 @@ const Hero = ({ isLoading }: { isLoading: boolean }) => {
 
       {/* Date & Availability Section */}
       <motion.div 
-        // Agar loading hai, toh 'initial' state maintain karo, warna animate karo
         initial={{ opacity: 0, y: -30 }}
-        animate={!isLoading ? { opacity: 1, y: 0 } : {}} // Trigger ONLY if not loading
-        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }} // Thoda extra delay intro ke baad
-        className="absolute top-28 right-8 md:right-20 flex items-center gap-5"
+        animate={!isLoading ? { opacity: 1, y: 0 } : {}} 
+        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+        // CHANGE 2: 'top-28' ko mobile ke liye 'top-20' kar diya taaki upar space ban jaye
+        className="absolute top-20 right-6 md:top-28 md:right-20 flex items-center gap-3 md:gap-5"
       >
-        <span className="font-heading text-transparent stroke-text text-7xl md:text-9xl text-white leading-none drop-shadow-md">
+        {/* CHANGE 3: Font size 'text-7xl' se ghata kar 'text-5xl' kar diya mobile ke liye */}
+        <span className="font-heading text-transparent stroke-text text-5xl md:text-9xl text-white leading-none drop-shadow-md">
           {day}
         </span>
         <div className="flex flex-col justify-center">
-          <span className="font-body uppercase text-3xl md:text-4xl text-white leading-tight">
+          {/* CHANGE 4: Month ka size bhi adjust kiya */}
+          <span className="font-body uppercase text-xl md:text-4xl text-white leading-tight">
             {month}
           </span>
-          <span className="font-body uppercase text-lg md:text-lg text-gray-400 mb-4 leading-tight">
+          <span className="font-body uppercase text-sm md:text-lg text-gray-400 mb-0 md:mb-4 leading-tight">
             Available for work
           </span>
         </div>
@@ -60,14 +63,16 @@ const Hero = ({ isLoading }: { isLoading: boolean }) => {
         {/* Left Side: Main Heading */}
         <motion.div 
           initial={{ opacity: 0, y: 60 }}
-          animate={!isLoading ? { opacity: 1, y: 0 } : {}} // Trigger ONLY if not loading
-          transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }} // Delay badha diya
-          className="relative z-10"
+          animate={!isLoading ? { opacity: 1, y: 0 } : {}} 
+          transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }} 
+          className="relative z-10 w-full"
         >
-          <h2 className="font-hand text-3xl md:text-4xl mb-2 text-gray-300 ml-1">
+          <h2 className="font-hand text-2xl md:text-4xl mb-1 md:mb-2 text-gray-300 ml-1">
             Creative
           </h2>
-          <h1 className="font-heading text-8xl md:text-[10rem] leading-[0.85] tracking-tighter text-white mix-blend-overlay">
+          
+          {/* CHANGE 5: Main Heading ka size 'text-8xl' se 'text-6xl' kar diya mobile ke liye */}
+          <h1 className="font-heading text-6xl sm:text-7xl md:text-[10rem] leading-[0.85] tracking-tighter text-white mix-blend-overlay">
             FULL STACK <br />
             <span className="text-white/80">WEB DEVELOPER</span>
           </h1>
@@ -76,19 +81,20 @@ const Hero = ({ isLoading }: { isLoading: boolean }) => {
         {/* Right Side Container: Bio & Button */}
         <motion.div 
           initial={{ opacity: 0, y: 60 }}
-          animate={!isLoading ? { opacity: 1, y: 0 } : {}} // Trigger ONLY if not loading
-          transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }} // Aur zyada delay stagger ke liye
-          className="max-w-xl mt-16 md:mt-24 flex flex-col w-full md:w-auto md:pl-10"
+          animate={!isLoading ? { opacity: 1, y: 0 } : {}} 
+          transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }} 
+          // CHANGE 6: Margin top 'mt-10' kar diya mobile ke liye taaki gap rahe
+          className="max-w-xl mt-10 md:mt-24 flex flex-col w-full md:w-auto md:pl-10"
         > 
           
-          <p className="self-start font-body uppercase text-lg md:text-xl leading-relaxed tracking-wide text-gray-200 mb-10 text-justify shadow-black drop-shadow-sm">
+          <p className="self-start font-body uppercase text-base md:text-xl leading-relaxed tracking-wide text-gray-200 mb-8 md:mb-10 text-justify shadow-black drop-shadow-sm">
             I am a Computer Science engineering student and Full Stack Developer based in Delhi and NCR. 
             I specialize in the MERN stack and creating intuitive web experiences.
           </p>
           
           <motion.a 
             href="https://wa.me/918130675823" 
-            className="self-end relative overflow-hidden w-64 h-20 rounded-full glass-panel flex items-center justify-center uppercase font-body text-xl tracking-widest border border-white/30 group hover:bg-white hover:text-white transition-colors duration-300"
+            className="self-end relative overflow-hidden w-52 h-16 md:w-64 md:h-20 rounded-full glass-panel flex items-center justify-center uppercase font-body text-lg md:text-xl tracking-widest border border-white/30 group hover:bg-white hover:text-white transition-colors duration-300"
             initial="initial"
             whileHover="hover"
             target="_blank"
