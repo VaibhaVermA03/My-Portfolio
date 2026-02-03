@@ -38,7 +38,7 @@ const Hero = ({ isLoading }: { isLoading: boolean }) => {
         initial={{ opacity: 0, y: -30 }}
         animate={!isLoading ? { opacity: 1, y: 0 } : {}} 
         transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-        className="absolute top-16 right-5 md:top-28 md:right-20 flex items-center gap-3 md:gap-5"
+        className="absolute top-24 right-5 md:top-28 md:right-20 flex items-center gap-3 md:gap-5"
       >
         <span className="font-heading text-transparent stroke-text text-4xl md:text-9xl text-white leading-none drop-shadow-md">
           {day}
