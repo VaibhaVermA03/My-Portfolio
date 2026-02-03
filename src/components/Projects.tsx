@@ -72,7 +72,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="work" className="relative bg-dark-grey w-full px-8 md:px-20 py-32 z-10">
+    <section id="work" className="relative bg-dark-grey w-full px-5 md:px-20 py-20 md:py-32 z-10">
       
       {/* Title Animation */}
       <motion.h2 
@@ -80,22 +80,22 @@ const Projects = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl mb-24 leading-none text-white whitespace-nowrap"
+        className="font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl mb-12 md:mb-24 leading-none text-white whitespace-nowrap"
       >
         MY <span className="text-transparent stroke-text">PROJECTS -</span>
       </motion.h2>
 
       {/* Projects List */}
-      <div className="flex flex-col gap-32">
+      <div className="flex flex-col gap-16 md:gap-32">
         {projectData.map((project, index) => (
           /* Card Scroll Animation */
           <motion.div 
             key={project.id} 
             initial={{ opacity: 0, y: 70 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }} // 20% dikhne par trigger hoga
+            viewport={{ once: true, amount: 0.2 }} 
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className={`flex flex-col md:flex-row gap-12 items-center cursor-pointer group ${
+            className={`flex flex-col md:flex-row gap-6 md:gap-12 items-center cursor-pointer group ${
               index % 2 !== 0 ? 'md:flex-row-reverse' : ''
             }`}
             onClick={() => setSelectedProject(project)}
@@ -108,10 +108,10 @@ const Projects = () => {
               />
             </div>
             <div className={`w-full md:w-1/2 ${index % 2 !== 0 ? 'md:text-right' : 'md:text-left'}`}>
-              <h3 className="font-heading text-5xl md:text-7xl mb-2 text-white group-hover:text-gray-300 transition-colors">
+              <h3 className="font-heading text-4xl md:text-7xl mb-2 text-white group-hover:text-gray-300 transition-colors">
                 {project.title}
               </h3>
-              <p className="font-body uppercase text-xl text-gray-400 tracking-wider">
+              <p className="font-body uppercase text-sm md:text-xl text-gray-400 tracking-wider">
                 {project.subtitle}
               </p>
             </div>
@@ -127,7 +127,7 @@ const Projects = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: "100%" }}
               transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }} 
-              className="fixed inset-0 z-[99999] bg-[#111] text-white flex flex-col md:flex-row overflow-hidden w-full h-full"
+              className="fixed inset-0 z-[99999] bg-[#111] text-white flex flex-col md:flex-row overflow-y-auto md:overflow-hidden w-full h-full"
             >
               
               <button 
@@ -136,14 +136,17 @@ const Projects = () => {
                   absolute z-[10000] 
                   font-body font-bold uppercase tracking-widest text-white 
                   hover:text-gray-400 transition-colors cursor-pointer 
-                  top-4 right-4 text-sm bg-black/60 backdrop-blur-md px-4 py-2 rounded-full
+                  /* Mobile: Smaller, pill shaped, visible background */
+                  top-4 right-4 text-xs 
+                  bg-black/60 backdrop-blur-md px-4 py-2 rounded-full
+                  /* Desktop: Larger, transparent */
                   md:top-8 md:right-8 md:text-xl md:bg-transparent md:backdrop-blur-none md:px-0 md:py-0 md:rounded-none
                 "
               >
                 CLOSE
               </button>
 
-              <div className="w-full md:w-1/2 h-1/2 md:h-full bg-gray-900 relative">
+              <div className="w-full md:w-1/2 h-64 md:h-full bg-gray-900 relative shrink-0">
                  <img 
                     src={selectedProject.placeholder} 
                     alt={selectedProject.title}
@@ -152,28 +155,28 @@ const Projects = () => {
                  <div className="absolute inset-0 bg-black/20" />
               </div>
 
-              <div className="w-full md:w-1/2 h-1/2 md:h-full flex flex-col justify-center px-8 md:px-20 py-12 bg-[#111] relative">
+              <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col justify-center px-6 md:px-20 py-10 md:py-12 bg-[#111] relative">
                  <motion.div
                    initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
                    transition={{ delay: 0.3 }}
                  >
-                   <p className="font-body uppercase text-gray-500 tracking-[0.2em] mb-4 text-sm">
+                   <p className="font-body uppercase text-gray-500 tracking-[0.2em] mb-4 text-xs md:text-sm">
                       {selectedProject.subtitle}
                    </p>
-                   <h2 className="font-heading text-6xl md:text-7xl lg:text-8xl leading-[0.9] mb-8 text-white">
+                   <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-6 md:mb-8 text-white">
                       {selectedProject.title}
                    </h2>
-                   <p className="font-body uppercase text-justify text-gray-400 text-lg md:text-xl leading-relaxed mb-16 max-w-md">
+                   <p className="font-body uppercase text-justify text-gray-400 text-sm md:text-xl leading-relaxed mb-10 md:mb-16 max-w-md">
                       {selectedProject.description}
                    </p>
                    <button 
                      onClick={(e) => handleLiveSiteClick(e, selectedProject.liveLink)}
-                     className="group flex items-center gap-6 font-heading text-4xl md:text-5xl text-white hover:text-gray-300 transition-colors border-b-2 border-white pb-2"
+                     className="group flex items-center gap-4 md:gap-6 font-heading text-3xl md:text-5xl text-white hover:text-gray-300 transition-colors border-b-2 border-white pb-2"
                    >
                       VISIT LIVE SITE
-                      <span className="bg-white text-black rounded-full p-3 group-hover:rotate-45 transition-transform duration-300">
-                        <ArrowUpRight size={28} />
+                      <span className="bg-white text-black rounded-full p-2 md:p-3 group-hover:rotate-45 transition-transform duration-300">
+                        <ArrowUpRight size={20} className="md:w-7 md:h-7" />
                       </span>
                    </button>
                  </motion.div>
@@ -184,7 +187,7 @@ const Projects = () => {
                        initial={{ opacity: 0, y: 20 }}
                        animate={{ opacity: 1, y: 0 }}
                        exit={{ opacity: 0, y: 20 }}
-                       className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-20 md:translate-x-0 flex items-center gap-3 bg-red-500/10 border border-red-500/50 text-red-400 px-6 py-4 rounded-lg backdrop-blur-md shadow-xl z-[100000]"
+                       className="fixed bottom-10 left-1/2 -translate-x-1/2 w-[90%] md:w-auto flex items-center gap-3 bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 md:px-6 md:py-4 rounded-lg backdrop-blur-md shadow-xl z-[100000]"
                      >
                        <AlertCircle size={20} />
                        <span className="font-body uppercase text-xs font-bold tracking-widest">
