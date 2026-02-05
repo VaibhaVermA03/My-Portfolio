@@ -72,23 +72,29 @@ const Projects = () => {
   };
 
   return (
-    <section id="work" className="relative bg-dark-grey w-full px-5 md:px-20 py-20 md:py-32 z-10">
+    <section id="work" className="relative bg-transparent w-full px-5 md:px-20 py-20 md:py-32 z-10">
       
-      {/* Title Animation */}
-      <motion.h2 
+      {/* Title & Subtitle Section */}
+      <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl mb-12 md:mb-24 leading-none text-white whitespace-nowrap"
+        className="mb-12 md:mb-24"
       >
-        MY <span className="text-transparent stroke-text">PROJECTS -</span>
-      </motion.h2>
+        <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl mb-4 md:mb-6 leading-none text-white whitespace-nowrap">
+          MY <span className="text-transparent stroke-text">PROJECTS</span>
+        </h2>
+        
+        {/* Added Subtitle Here */}
+        <p className="font-hand text-xl md:text-3xl text-gray-400 max-w-7xl">
+          The Projects I've built to solve real-world problems and showcase my skills. Click on any project to learn more about it.
+        </p>
+      </motion.div>
 
       {/* Projects List */}
       <div className="flex flex-col gap-16 md:gap-32">
         {projectData.map((project, index) => (
-          /* Card Scroll Animation */
           <motion.div 
             key={project.id} 
             initial={{ opacity: 0, y: 70 }}
@@ -136,10 +142,8 @@ const Projects = () => {
                   absolute z-[10000] 
                   font-body font-bold uppercase tracking-widest text-white 
                   hover:text-gray-400 transition-colors cursor-pointer 
-                  /* Mobile: Smaller, pill shaped, visible background */
                   top-4 right-4 text-xs 
                   bg-black/60 backdrop-blur-md px-4 py-2 rounded-full
-                  /* Desktop: Larger, transparent */
                   md:top-8 md:right-8 md:text-xl md:bg-transparent md:backdrop-blur-none md:px-0 md:py-0 md:rounded-none
                 "
               >
@@ -167,7 +171,7 @@ const Projects = () => {
                    <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-6 md:mb-8 text-white">
                       {selectedProject.title}
                    </h2>
-                   <p className="font-body uppercase text-justify text-gray-400 text-sm md:text-xl leading-relaxed mb-10 md:mb-16 max-w-md">
+                   <p className="font-body uppercase text-gray-400 text-sm md:text-xl leading-relaxed mb-10 md:mb-16 max-w-md">
                       {selectedProject.description}
                    </p>
                    <button 

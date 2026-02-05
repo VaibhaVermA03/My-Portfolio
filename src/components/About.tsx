@@ -12,21 +12,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="relative w-full min-h-screen flex flex-col md:flex-row z-10 bg-dark-grey">
-      
-      {/* Background Video */}
-      <div className="absolute inset-0 -z-20 h-full w-full">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-[#1a1a1a]/70 backdrop-blur-3xl" />
-      </div>
+    <section id="about" className="relative w-full min-h-screen flex flex-col md:flex-row z-10 bg-transparent">
 
       {/* LEFT: IMAGE SECTION (40%) */}
       <motion.div 
@@ -37,7 +23,7 @@ const About = () => {
         className="w-full md:w-[40%] relative order-2 md:order-1 min-h-[50vh] md:min-h-auto"
       >
         <img 
-          src="/vaibhav.jpg" 
+          src="/vaibhav-2.jpg" 
           alt="Vaibhav Verma" 
           className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
         />
