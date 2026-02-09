@@ -26,11 +26,11 @@ const Hero = ({ isLoading }: { isLoading: boolean }) => {
           loop 
           muted 
           playsInline
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover opacity-100"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Date & Availability Section */}

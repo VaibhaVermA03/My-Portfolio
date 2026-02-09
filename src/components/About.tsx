@@ -23,9 +23,9 @@ const About = () => {
         className="w-full md:w-[40%] relative order-2 md:order-1 min-h-[50vh] md:min-h-auto"
       >
         <img 
-          src="/vaibhav-2.jpg" 
+          src="/vaibhav.jpg" 
           alt="Vaibhav Verma" 
-          className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+          className="w-full h-auto md:absolute md:inset-0 md:h-full object-contain md:object-cover grayscale hover:grayscale-0 transition-all duration-700"
         />
         <div className="absolute inset-0 bg-black/10" />
       </motion.div>

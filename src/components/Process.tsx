@@ -77,17 +77,17 @@ const Process = () => {
               `}
             >
               {/* Background Number */}
-              <span className="absolute top-2 right-4 font-heading text-6xl md:text-8xl text-transparent stroke-text opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+              <span className="absolute top-2 right-4 font-heading text-6xl md:text-8xl text-transparent stroke-text opacity-100 group-hover:opacity-40 transition-opacity duration-500">
                 {step.number}
               </span>
 
               {/* Title */}
-              <h3 className="font-heading text-3xl md:text-4xl text-white mb-4 relative z-10">
+              <h3 className="font-heading text-gray-300 text-3xl md:text-4xl mb-4 relative z-10">
                 {step.title}
               </h3>
 
               {/* Description */}
-              <p className="font-body uppercase text-gray-400 text-sm md:text-lg leading-relaxed relative z-10">
+              <p className="font-body uppercase text-white text-sm md:text-lg leading-relaxed relative z-10">
                 {step.text}
               </p>
 

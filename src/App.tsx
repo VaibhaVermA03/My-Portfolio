@@ -9,6 +9,8 @@ import Projects from './components/Projects';
 import Services from './components/Services';
 import Process from './components/Process';
 import Footer from './components/Footer';
+// Import the new Three.js background
+import HalftoneBackground from './components/HalftoneBackground';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,35 +24,33 @@ function App() {
   }, []);
 
   return (
-    <main className="bg-dark-grey min-h-screen">
+    <main className="relative min-h-screen bg-black text-white selection:bg-white/20">
+      
+      {/* --- NEW 3D HALFTONE BACKGROUND --- */}
+      <HalftoneBackground />
+      
+      {/* Layer 2: Vignette Mask (Optional for darker edges) */}
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,#000000_90%)]" />
+
+      {/* --- MAIN CONTENT --- */}
       <AnimatePresence mode='wait'>
         {isLoading && <Intro key="intro" />}
       </AnimatePresence>
 
-      {!isLoading && <Navbar />}
-
-      <Hero isLoading={isLoading} />
-      
-      {/* FIXED GRADIENT WRAPPER:
-        1. bg-[linear-gradient(...)]: Upar se neeche straight color change.
-           - 0% (#222): About Section (Grey)
-           - 40% (#111): Projects Section (Darker)
-           - 80-100% (#000): Process Section (Pure Black)
-        2. border-t border-white/10: Glassy Edge at the top.
-      */}
-      <div className="relative w-full border-t border-white/10 bg-[linear-gradient(to_bottom,#222222_0%,#111111_40%,#000000_80%,#000000_100%)]">
-        
-        {/* Subtle Noise Texture for Glass Feel (Optional) */}
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat mix-blend-overlay"></div>
-        
-        <About />
-        <Skills />
-        <Projects />
-        <Services />
-        <Process />
-      </div>
-      
-      <Footer />
+      {!isLoading && (
+        <div className="relative z-10">
+          <Navbar />
+          <Hero isLoading={isLoading} />
+          
+          <About />
+          <Skills />
+          <Projects />
+          <Services />
+          <Process />
+          
+          <Footer />
+        </div>
+      )}
     </main>
   );
 }

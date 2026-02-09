@@ -16,10 +16,23 @@
 @layer base {
   body {
     @apply font-body text-white bg-black antialiased;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   /* Smooth Scroll */
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
   }
 }
 
@@ -31,4 +44,8 @@
 .stroke-text {
   -webkit-text-stroke: 1px white;
   color: transparent;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }

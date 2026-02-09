@@ -12,11 +12,11 @@ const Footer = () => {
           loop 
           muted 
           playsInline
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover opacity-100"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
       </div>
 
       {/* Main Content Row */}
@@ -111,7 +111,7 @@ const Footer = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="relative z-10 w-full border-t border-white/20 pt-6 md:pt-8 flex flex-col-reverse gap-6 md:flex-row justify-between items-center text-xs md:text-sm font-body uppercase tracking-wider text-gray-400"
+        className="relative z-10 w-full border-t border-white/20 pt-6 md:pt-8 flex flex-col-reverse gap-6 md:flex-row justify-between items-center text-xs md:text-sm font-body uppercase tracking-wider text-white"
       >
         
         <p className="text-center md:text-left">© 2026 Vaibhav Verma. All Rights Reserved.</p>
