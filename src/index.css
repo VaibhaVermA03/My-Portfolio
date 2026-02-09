@@ -1,51 +1,50 @@
-@import "tailwindcss";
-
-/* 1. Font Imports */
+/* 1. Imports sabse upar hone chahiye */
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+CA:wght@100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-@theme {
-  --font-hand: "Playwrite CA", cursive;
-  --font-body: "DM Sans", sans-serif;
-  --font-heading: "Bebas Neue", sans-serif;
-  
-  --color-dark-grey: #1a1a1a; /* Background for About/Project */
-}
+/* 2. Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* 3. Base Styles */
 @layer base {
   body {
+    /* Ab 'font-body' config se aayega, toh error nahi dega */
     @apply font-body text-white bg-black antialiased;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
-  /* Smooth Scroll */
+
   html {
     scroll-behavior: smooth;
   }
 }
 
+/* 4. Utilities */
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
 
   .no-scrollbar {
-    -ms-overflow-style: none; 
-    scrollbar-width: none;  
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
   }
 }
 
-/* Custom Utilities */
-.glass-panel {
-  @apply bg-white/10 backdrop-blur-md border border-white/20;
-}
-
+/* 5. Custom Classes */
 .stroke-text {
   -webkit-text-stroke: 1px white;
   color: transparent;
 }
 
+/* Global Scrollbar Hide */
 body::-webkit-scrollbar {
   display: none;
 }

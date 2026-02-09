@@ -6,12 +6,16 @@ export default {
   ],
   theme: {
     extend: {
+      // 1. Fonts yahan define kiye hain
       fontFamily: {
-        // Patrick David uses a clean grotesque font like Inter or Helvetica
-        sans: ['"Inter"', 'sans-serif'],
-        serif: ['"Playfair Display"', 'serif'],
+        hand: ['"Playwrite CA"', 'cursive'],
+        body: ['"DM Sans"', 'sans-serif'],
+        heading: ['"Bebas Neue"', 'sans-serif'],
+        sans: ['"Inter"', 'sans-serif'], // Fallback
       },
+      // 2. Colors merge kar diye hain
       colors: {
+        'dark-grey': '#1a1a1a', // Aapka custom color
         'pd-black': '#111111',
         'pd-gray': '#888888',
         'pd-light': '#F4F4F4',
